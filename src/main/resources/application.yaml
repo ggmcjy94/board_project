@@ -1,0 +1,18 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:/board?serverTimezone=Asia/Seoul
+    username: root
+    password: gustjr0227
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+jwt:
+  secret-key: hyunseokjwt
+  expire: 1000000000000000000
