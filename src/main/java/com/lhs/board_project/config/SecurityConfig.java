@@ -38,12 +38,12 @@ public class SecurityConfig {
         http.csrf().disable();
         http
                 .authorizeRequests()
-//                .antMatchers(
-//                        "/",
-//                        "/signUp",
-//                        "/signIn"
-//                ).permitAll()
-                .anyRequest().permitAll();
+                .antMatchers(
+                        "/",
+                        "/signUp",
+                        "/signIn"
+                ).permitAll()
+                .anyRequest().authenticated();
 
         //no session
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

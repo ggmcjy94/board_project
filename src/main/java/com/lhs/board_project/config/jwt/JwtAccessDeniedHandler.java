@@ -19,6 +19,7 @@ import java.io.IOException;
 public class JwtAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+        System.out.println("asdasd");
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
 }

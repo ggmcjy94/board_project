@@ -21,11 +21,11 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${jwt.secret-key}")
+    @Value("${jwt.token.secret-key}")
     private String secret_key;
-    @Value("${jwt.expire}")
-    private long expire_time;
 
+    @Value("${jwt.token.expire-length}")
+    private long expire_time;
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -55,7 +55,7 @@ public class JwtTokenProvider {
      */
 
     public Authentication getAuthentication(String token) {
-        String userName = Jwts.parser().setSigningKey(secret_key).parseClaimsJwt(token).getBody().getSubject();
+        String userName = Jwts.parser().setSigningKey(secret_key).parseClaimsJws(token).getBody().getSubject();
         UserDetails userDetails = userDetailsService.loadUserByUsername(userName);
 
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
@@ -82,9 +82,10 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(secret_key).parseClaimsJwt(token);
+            Jwts.parser().setSigningKey(secret_key).parseClaimsJws(token);
             return true;
         } catch (JwtException e) {
+            System.out.println(e.getMessage());
             throw new CustomException("Error on Token", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

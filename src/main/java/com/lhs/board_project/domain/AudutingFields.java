@@ -1,6 +1,7 @@
 package com.lhs.board_project.domain;
 
 
+import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -13,8 +14,9 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-@EntityListeners(AuditingEntityListener.class) //데이터 변경시 알림을 받는 방법
+@Getter
 @MappedSuperclass //매핑정보만 상속받는 Superclass라는 의미의 @MappedSuperclass 어노테이션 선언
+@EntityListeners(AuditingEntityListener.class) //데이터 변경시 알림을 받는 방법
 public abstract class AudutingFields {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
