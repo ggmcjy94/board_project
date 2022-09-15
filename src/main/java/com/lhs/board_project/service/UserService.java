@@ -24,6 +24,8 @@ public class UserService {
     private final PasswordEncoder bCryptPasswordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
+
+
     public UserSignUpRequest signUp(UserSignUpRequest request) {
         User entity = request.toUserEntity();
         entity.hashPassword(bCryptPasswordEncoder);

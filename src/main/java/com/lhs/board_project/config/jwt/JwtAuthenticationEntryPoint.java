@@ -16,7 +16,7 @@ import java.io.IOException;
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
-        // 시간이 종료되면 일로 넘어옴 
+        // 시간이 종료되면 일로 넘어옴
         log.error("UnAuthorized -- message : " + authException.getMessage()); // 로그를 남기고
         response.sendError(HttpServletResponse.SC_FORBIDDEN);
     }
