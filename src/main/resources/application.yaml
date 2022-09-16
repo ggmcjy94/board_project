@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:/board?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:/project?serverTimezone=Asia/Seoul
     username: root
     password: gustjr0227
 
@@ -18,4 +18,4 @@ spring:
 jwt:
   token:
     secret-key: aG91Mjctc2ltcGxlLXNwcmluZy1ib290LWFwaS1qd3QK
-    expire-length: 300000
+    expire-length: 30000000

@@ -12,13 +12,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
-@Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User  extends AudutingFields{
+public class User extends AudutingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,10 @@ public class User  extends AudutingFields{
     private String nickName;
     private String password;
     private String name;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Board> boards = new HashSet<>();
+
     @Builder
     public User(String email, String nickName, String password, String name) {
         this.email = email;

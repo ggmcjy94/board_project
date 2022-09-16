@@ -17,6 +17,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -43,5 +45,9 @@ public class UserService {
         } catch (AuthenticationException e) {
             throw new CustomException("Invalid credentials supplied", HttpStatus.UNPROCESSABLE_ENTITY);
         }
+    }
+
+    public Optional<User> findByEmail(String username) {
+        return repository.findByEmail(username);
     }
 }
