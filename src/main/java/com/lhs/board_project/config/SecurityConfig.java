@@ -41,7 +41,8 @@ public class SecurityConfig {
                 .antMatchers(
                         "/",
                         "/signUp",
-                        "/signIn"
+                        "/signIn",
+                        "/board/all"
                 ).permitAll()
                 .anyRequest().authenticated();
 

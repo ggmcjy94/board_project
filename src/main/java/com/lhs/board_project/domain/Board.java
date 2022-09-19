@@ -1,11 +1,13 @@
 package com.lhs.board_project.domain;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class Board extends AudutingFields{
 

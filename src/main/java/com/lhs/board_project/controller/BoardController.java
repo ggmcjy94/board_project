@@ -3,6 +3,7 @@ package com.lhs.board_project.controller;
 
 import com.lhs.board_project.domain.User;
 import com.lhs.board_project.dto.BoardCreateRequest;
+import com.lhs.board_project.dto.BoardResponse;
 import com.lhs.board_project.ex.UserNotFoundException;
 import com.lhs.board_project.repository.BoardRepository;
 import com.lhs.board_project.service.BoardService;
@@ -17,10 +18,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -30,6 +30,14 @@ public class BoardController {
 
     private final UserService userService;
     private final BoardService boardService;
+
+
+    @GetMapping("/all")
+    public ResponseEntity<List<BoardResponse>> findAllBoardController() {
+        return new ResponseEntity<>(boardService.findAll(), HttpStatus.OK);
+    }
+
+
 
     @PostMapping("/save")
     public ResponseEntity<?> createBoardController(@AuthenticationPrincipal UserDetails userDetails,
@@ -42,5 +50,7 @@ public class BoardController {
             throw new RuntimeException();
         }
     }
+
+
 
 }
