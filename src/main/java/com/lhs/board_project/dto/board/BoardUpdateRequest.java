@@ -1,18 +1,15 @@
-package com.lhs.board_project.dto;
+package com.lhs.board_project.dto.board;
 
-
-import com.lhs.board_project.domain.Board;
-import com.lhs.board_project.domain.User;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardCreateRequest {
+public class BoardUpdateRequest {
 
     @NotEmpty(message = "Please enter your title")
     private String title;

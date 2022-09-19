@@ -1,4 +1,4 @@
-package com.lhs.board_project.dto;
+package com.lhs.board_project.dto.board;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
