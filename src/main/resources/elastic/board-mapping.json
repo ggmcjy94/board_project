@@ -1,0 +1,17 @@
+{
+  "properties" : {
+    "id" : {"type" : "keyword"},
+    "title" : {"type" : "keyword"},
+    "content" : {"type" : "keyword"},
+    "user" : {
+      "properties" : {
+        "email" : {"type" : "text"},
+        "name" : {"type" : "text"}
+      }
+    },
+    "createdAt" : {
+      "type" : "date",
+      "format": "uuuu-MM-dd'T'HH:mm:ss.SSS||epoch_millis"
+    }
+  }
+}

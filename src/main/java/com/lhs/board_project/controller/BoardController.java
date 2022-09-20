@@ -47,6 +47,11 @@ public class BoardController {
         return new ResponseEntity<>(boardService.findById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<BoardResponse>> searchByContent(@RequestParam(value="content") String content) {
+        return ResponseEntity.ok(boardService.findBySearchContent(content));
+    }
+
     @GetMapping("/me")
     public ResponseEntity<List<BoardResponse>> myBoardsController(@AuthenticationPrincipal UserDetails userDetails) {
         return new ResponseEntity<>(boardService.getBoardsUserEmail(getAuthenticationUser(userDetails)), HttpStatus.OK);

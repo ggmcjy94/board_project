@@ -1,12 +1,14 @@
 package com.lhs.board_project.service;
 
 
+import com.lhs.board_project.document.BoardDoc;
 import com.lhs.board_project.domain.Board;
 import com.lhs.board_project.domain.User;
 import com.lhs.board_project.dto.board.BoardCreateRequest;
 import com.lhs.board_project.dto.board.BoardResponse;
 import com.lhs.board_project.dto.board.BoardUpdateRequest;
 import com.lhs.board_project.repository.BoardRepository;
+import com.lhs.board_project.repository.elastic.BoardSearchRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -23,6 +26,7 @@ import java.util.List;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final BoardSearchRepository boardSearchRepository;
 
     public void create(BoardCreateRequest boardCreateRequest, User user) {
 
@@ -42,7 +46,10 @@ public class BoardService {
                 .toList();
     }
 
-
+    public List<BoardResponse> findBySearchContent(String content) {
+        List<BoardDoc> boards = boardSearchRepository.findByContentContaining(content);
+        return boards.stream().map(this::getBoardDocResponse).collect(Collectors.toList());
+    }
 
     public void update(Long id, BoardUpdateRequest boardUpdateRequest, User user) {
         Board board = getBoard(id);
@@ -91,6 +98,17 @@ public class BoardService {
                 board.getUser().getEmail(),
                 board.getCreatedAt());
     }
+
+    private BoardResponse getBoardDocResponse(BoardDoc board) {
+        return new BoardResponse(
+                board.getId(),
+                board.getTitle(),
+                board.getContent(),
+                board.getUser().getName(),
+                board.getUser().getEmail(),
+                board.getCreatedAt());
+    }
+
 
 
 }

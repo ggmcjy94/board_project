@@ -44,7 +44,8 @@ public class SecurityConfig {
                         "/signUp",
                         "/signIn"
                 ).permitAll()
-                .antMatchers(HttpMethod.GET, "/board/all", "/board/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/board/all", "/board/{id}", "/board/search?content=**")
+                .permitAll()
                 .anyRequest().authenticated();
 
         //no session
