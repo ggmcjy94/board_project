@@ -15,6 +15,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 //    List<Board> findAllByUserEmailOrderById(String userEmail);
 
     List<Board> findAllByUserEmailOrderByIdDesc(String email);
-
     List<Board> findByContentContaining(String content);
 }

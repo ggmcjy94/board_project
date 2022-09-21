@@ -48,6 +48,9 @@ public class BoardService {
 
     public List<BoardResponse> findBySearchContent(String content) {
         List<BoardDoc> boards = boardSearchRepository.findByContentContaining(content);
+        for (BoardDoc board : boards) {
+            System.out.println(board.getCreated_at());
+        }
         return boards.stream().map(this::getBoardDocResponse).collect(Collectors.toList());
     }
 
@@ -104,9 +107,9 @@ public class BoardService {
                 board.getId(),
                 board.getTitle(),
                 board.getContent(),
-                board.getUser().getName(),
-                board.getUser().getEmail(),
-                board.getCreatedAt());
+                board.getEmail(),
+                board.getName(),
+                board.getCreated_at());
     }
 
 
