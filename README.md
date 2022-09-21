@@ -26,7 +26,7 @@ Spring Boot
 
 Logstash 
 
-<img width="1031" alt="image" src="https://user-images.githubusercontent.com/54434182/191553564-66bb2824-52e8-42fa-b4d7-6234da3a857f.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/54434182/191553564-66bb2824-52e8-42fa-b4d7-6234da3a857f.png">
 
 elasticsearch 
 
