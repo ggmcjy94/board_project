@@ -19,15 +19,4 @@ Spring Boot
 * jwt 
 
 
-## 기술 설명 
-
-* mysql -> logstash -> elasticsearch 데이터 이동 흐름도 
-
-![image](https://user-images.githubusercontent.com/54434182/191554245-d6bf0fbc-450c-4655-9533-56403b6fafdd.png)
-
-Logstash 연동 config 파일  
-
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/54434182/191553564-66bb2824-52e8-42fa-b4d7-6234da3a857f.png">
-
-
 
